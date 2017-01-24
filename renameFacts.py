@@ -1,4 +1,4 @@
-#Alvaro Zuno
+#alzuno
 #January 22nd 2017
 #Use this to rename electronic invoices from Ecuador
 #To use, run: python renameFact.py \folder\where\the\invoices\are

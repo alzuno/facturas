@@ -1,6 +1,8 @@
-#Alvaro Zuno
-#January 22nd 2017
-#Use this to rename electronic invoices from Ecuador
+#alzuno
+#January 23nd 2017
+#Use this to extract data from electronic invoices and
+#add this to a csv file - Ecuador
+
 #To use, run: python renameFact.py \folder\where\the\invoices\are outputfile.csv
 
 import os,glob,sys,re,csv
