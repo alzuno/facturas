@@ -17,7 +17,7 @@ print "Current output file %s" % output_file
 
 #Find the 'Razon Social' and full invoice number
 
-pattern = re.compile("<razonSocial>(.*?)<\/razonSocial>[\s\S]*<estab>(.*?)<\/estab>[\s\S]*<ptoEmi>(.*?)<\/ptoEmi>[\s\S]*<secuencial>(.*?)<\/secuencial>",re.DOTALL|re.MULTILINE|re.IGNORECASE)
+pattern = re.compile("<razonSocial>(.*?)<\/razonSocial>[\s\S]*<estab>(.*?)<\/estab>[\s\S]*<ptoEmi>(.*?)<\/ptoEmi>[\s\S]*<secuencial>(.*?)<\/secuencial>[\s\S]*<fechaEmision>(.*?)<\/fechaEmision>[\s\S]*<totalSinImpuestos>(.*?)<\/totalSinImpuestos>[\s\S]*<importeTotal>(.*?)<\/importeTotal>",re.DOTALL|re.MULTILINE|re.IGNORECASE)
 
 with open(output_file, 'w') as csv_output_file:
     for files in glob.glob("*.xml"):
