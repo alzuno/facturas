@@ -15,7 +15,7 @@ current_dir = os.getcwd()
 print "Current working directory %s" % current_dir
 print "Current output file %s" % output_file
 
-#Find the 'Razon Social' and full invoice number
+#Find the 'Razon Social', invoice number and import
 
 pattern = re.compile("<razonSocial>(.*?)<\/razonSocial>[\s\S]*<ruc>(.*?)<\/ruc>[\s\S]*<estab>(.*?)<\/estab>[\s\S]*<ptoEmi>(.*?)<\/ptoEmi>[\s\S]*<secuencial>(.*?)<\/secuencial>[\s\S]*<fechaEmision>(.*?)<\/fechaEmision>[\s\S]*<totalSinImpuestos>(.*?)<\/totalSinImpuestos>[\s\S]*<importeTotal>(.*?)<\/importeTotal>[\s\S]*",re.DOTALL|re.MULTILINE|re.IGNORECASE)
 
