@@ -1,9 +1,9 @@
 #alzuno
-#January 23nd 2017
+#February 5 2017
 #Use this to extract data from electronic invoices and
-#add this to a csv file - Ecuador
+#add this data to a csv file - Ecuador
 
-#To use, run: python renameFact.py \folder\where\the\invoices\are outputfile.csv
+#To use, run: python factsToCSV.py \folder\where\the\invoices\are outputfile.csv
 
 import os,glob,sys,re,csv
 input_folder=sys.argv[1]
@@ -17,7 +17,7 @@ print "Current output file %s" % output_file
 
 #Find the 'Razon Social' and full invoice number
 
-pattern = re.compile("<razonSocial>(.*?)<\/razonSocial>[\s\S]*<estab>(.*?)<\/estab>[\s\S]*<ptoEmi>(.*?)<\/ptoEmi>[\s\S]*<secuencial>(.*?)<\/secuencial>[\s\S]*<fechaEmision>(.*?)<\/fechaEmision>[\s\S]*<totalSinImpuestos>(.*?)<\/totalSinImpuestos>[\s\S]*<importeTotal>(.*?)<\/importeTotal>",re.DOTALL|re.MULTILINE|re.IGNORECASE)
+pattern = re.compile("<razonSocial>(.*?)<\/razonSocial>[\s\S]*<ruc>(.*?)<\/ruc>[\s\S]*<estab>(.*?)<\/estab>[\s\S]*<ptoEmi>(.*?)<\/ptoEmi>[\s\S]*<secuencial>(.*?)<\/secuencial>[\s\S]*<fechaEmision>(.*?)<\/fechaEmision>[\s\S]*<totalSinImpuestos>(.*?)<\/totalSinImpuestos>[\s\S]*<importeTotal>(.*?)<\/importeTotal>[\s\S]*",re.DOTALL|re.MULTILINE|re.IGNORECASE)
 
 with open(output_file, 'w') as csv_output_file:
     for files in glob.glob("*.xml"):
@@ -25,7 +25,7 @@ with open(output_file, 'w') as csv_output_file:
         if pattern.search(data):
             invoice_data = pattern.findall(data)[0] #get the new file name
             try:
-                filewriter = csv.writer(csv_output_file)
+                filewriter = csv.writer(csv_output_file, quoting=csv.QUOTE_NONNUMERIC)
                 filewriter.writerow(invoice_data)
             except Exception,e:
                 print e
