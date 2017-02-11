@@ -1,5 +1,5 @@
 #alzuno
-#February 5 2017
+#February 10 2017
 #Use this to extract data from electronic invoices and
 #add this data to a csv file - Ecuador
 
@@ -17,7 +17,7 @@ print "Current output file %s" % output_file
 
 #Find the 'Razon Social', invoice number and import
 
-pattern = re.compile("<razonSocial>(.*?)<\/razonSocial>[\s\S]*<ruc>(.*?)<\/ruc>[\s\S]*<estab>(.*?)<\/estab>[\s\S]*<ptoEmi>(.*?)<\/ptoEmi>[\s\S]*<secuencial>(.*?)<\/secuencial>[\s\S]*<fechaEmision>(.*?)<\/fechaEmision>[\s\S]*<totalSinImpuestos>(.*?)<\/totalSinImpuestos>[\s\S]*<importeTotal>(.*?)<\/importeTotal>[\s\S]*",re.DOTALL|re.MULTILINE|re.IGNORECASE)
+pattern = re.compile("<razonSocial>(.*?)<\/razonSocial>[\s\S]*<ruc>(.*?)<\/ruc>[\s\S]*<estab>(.*?)<\/estab>[\s\S]*<ptoEmi>(.*?)<\/ptoEmi>[\s\S]*<secuencial>(.*?)<\/secuencial>[\s\S]*<fechaEmision>(.*?)<\/fechaEmision>[\s\S]*<identificacionComprador>(.*?)<\/identificacionComprador>[\s\S]*<totalSinImpuestos>(.*?)<\/totalSinImpuestos>[\s\S]*<importeTotal>(.*?)<\/importeTotal>[\s\S]*",re.DOTALL|re.MULTILINE|re.IGNORECASE)
 
 with open(output_file, 'w') as csv_output_file:
     for files in glob.glob("*.xml"):
